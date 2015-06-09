@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var fs = require('fs');
+var AWS = require('aws-sdk');
 
 /*
  * Time to do some non-default work. We are using Mongo DB and,
@@ -17,6 +19,12 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/palindrome');
 
+//Read config values from a JSON file.
+// var config = fs.readFileSync('./app_config.json', 'utf8');
+// config = JSON.parse(config);
+
+//Create DynamoDB client and pass in region.
+// var db = new AWS.DynamoDB({region: config.AWS_REGION});
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -42,6 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  */ 
 app.use(function(req,res,next){
     req.db = db;
+    // req.dbTableName = config.STARTUP_SIGNUP_TABLE;
     next();
 });
 

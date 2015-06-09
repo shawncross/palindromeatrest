@@ -14,14 +14,24 @@ var router = express.Router();
 router.get('/messagelist', function(req, res) {
 	// We've appended our db to our request so lets grab it
 	var db = req.db;
-	/*
-	 * hmmm, probably need to initialize the table, no?
-	 */
+	// var table = req.dbTableName;
 	var messages = db.get('messagelist');
 	messages.find({}, {}, function(e, docs) {
 		// Got all the messages, lets add them to the response.
 		res.json(docs);
 	});
+	
+// db.scan({
+        // "TableName": table,
+        // "Limit": 100,
+        // "ProjectionExpression": "message"
+    // }, function (err, data) {
+    // if (err) {
+    	// res.json(err);
+    // } else {
+    	// res.send(data);
+    // }
+    // });
 });
 
 /*

@@ -1,0 +1,4 @@
+{ 
+  "AWS_REGION": "us-east-1",
+  "STARTUP_SIGNUP_TABLE": "message-list-table"
+}
