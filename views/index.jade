@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h1= title
+  p The palindrome checker will..... check for palindromes lol
+  
+  // Wrapper
+  #wrapper
+    // Message INFO
+    #userInfo
+        h2 Message Info
+        p
+            strong Message:
+            |  <span id='messageContents'></span>
+            br
+            strong Is Palindrome:
+            |  <span id='messageIsAPalindrome'></span>
+    // /USER INFO
+
+    // Message LIST
+    h2 Message List
+    #messageList
+      table
+        thead
+          th Original Message
+          th Delete?
+        tbody
+    // /Message LIST
+    
+    // ADD Message
+    h2 New Message
+    #addMessage
+        fieldset
+            input#inputMessage(type='text', placeholder='MessageContents')
+            br
+            button#btnAddMessage Add Message
+    // /ADD USER
+
+    // /WRAPPER
